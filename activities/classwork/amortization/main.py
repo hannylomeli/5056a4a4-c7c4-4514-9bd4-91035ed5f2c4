@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import fire
 from util import Amortization
 
@@ -27,5 +26,6 @@ class Main(object):
         if save:
             fig.savefig(save)
 
-if _name_ == "_main_":
+
+if __name__ == "__main__":
     fire.Fire(Main)
