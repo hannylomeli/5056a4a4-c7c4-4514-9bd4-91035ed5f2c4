@@ -25,7 +25,7 @@ class AbstractIndustry(object):
     def to_dict(self):
         return{
             "title":self.title,
-            "children":[
+            "children": [
                 child.to_dict() for child in self.children
             ]
         }
@@ -33,10 +33,8 @@ class AbstractIndustry(object):
     def jsonify(self):
         return json.dumps(self.to_dict())
 
-
 class Division(AbstractIndustry):
     level = "SIC Division"
-
 
 class MajorGroup(AbstractIndustry):
     level = "SIC Major Group"
@@ -51,7 +49,7 @@ class MajorGroup(AbstractIndustry):
             ][0],
             children=[
                 Group(
-                    title=None,
+                    title=group.text,
                     children=[
                         Single(
                             title=inner.parent.text,
@@ -66,14 +64,11 @@ class MajorGroup(AbstractIndustry):
             ]
         )
 
-
 class Group(AbstractIndustry):
     level = "SIC Group"
 
-
 class Single(AbstractIndustry):
     level = "SIC Industry"
-
 
 class SIC(AbstractIndustry):
     level = "Standard Industry Classification"
@@ -103,4 +98,3 @@ class SIC(AbstractIndustry):
             title="SIC",
             children=divisions
         )
-

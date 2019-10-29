@@ -20,7 +20,7 @@ class Main(object):
         new_children = []
 
         for child in children:
-            is_child_valid = self._recursive_search(child, string_wrapper)
+            is_child_valid = self._recursive_search(child, string_wrapper, exact=exact)
             if is_child_valid:
                 new_children.append(child)
 
