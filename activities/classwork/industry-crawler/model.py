@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
+
 class AbstractIndustry(object):
 
     def __init__(self, title, children):
@@ -32,8 +33,10 @@ class AbstractIndustry(object):
     def jsonify(self):
         return json.dumps(self.to_dict())
 
+
 class Division(AbstractIndustry):
     level = "SIC Division"
+
 
 class MajorGroup(AbstractIndustry):
     level = "SIC Major Group"
@@ -63,11 +66,14 @@ class MajorGroup(AbstractIndustry):
             ]
         )
 
+
 class Group(AbstractIndustry):
     level = "SIC Group"
 
+
 class Single(AbstractIndustry):
     level = "SIC Industry"
+
 
 class SIC(AbstractIndustry):
     level = "Standard Industry Classification"
@@ -94,7 +100,7 @@ class SIC(AbstractIndustry):
                 major_group_url = url.replace("sic_manual.html", href)
                 divisions[-1].add_child(MajorGroup.from_url(major_group_url))
         return SIC(
-            title = "SIC",
-            children = divisions
+            title="SIC",
+            children=divisions
         )
 
