@@ -17,6 +17,7 @@ order by
          first_name asc,
          last_name asc
 limit 10;
+
 -- C) Count the number of male/female students that are at least 25 years old.
 select
        gender as "Gender",
